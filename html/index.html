@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0f13;
+      color: #e8e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      border-bottom: 1px solid #1e1e2e;
+      background: #13131a;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    nav a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #fff; }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      color: #7c7cff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #fff 40%, #7c7cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sub {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.75rem 1.8rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-primary { background: #5c5cff; color: #fff; }
+    .btn-ghost { background: transparent; color: #888; border: 1px solid #2a2a3a; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    .card {
+      background: #13131a;
+      border: 1px solid #1e1e2e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: #3a3a6a; }
+
+    .card-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+    .card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; color: #ddd; }
+    .card p { font-size: 0.85rem; color: #555; line-height: 1.5; }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #333;
+      border-top: 1px solid #1e1e2e;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">ACME</div>
+    <nav>
+      <a href="#">Продукт</a>
+      <a href="#">Цены</a>
+      <a href="#">Документация</a>
+      <a href="#">Войти</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="badge">Бета-версия</div>
+    <h1>Быстро.<br>Надёжно. Просто.</h1>
+    <p class="sub">Минималистичный стек, максимальный результат. Никакого лишнего кода — только то, что нужно.</p>
+    <div class="actions">
+      <a href="#" class="btn btn-primary">Начать бесплатно</a>
+      <a href="#" class="btn btn-ghost">Узнать больше</a>
+    </div>
+  </section>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Молниеносно</h3>
+      <p>Статический бинарь, нет оверхеда. Холодный старт за миллисекунды.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h3>Безопасно</h3>
+      <p>Образ без ОС. Нет shell, нет пакетов, нет лишних векторов атаки.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <h3>~5 МБ</h3>
+      <p>Scratch-образ с nginx. Меньше не бывает без жертв функциональностью.</p>
+    </div>
+  </div>
+
+  <footer>© 2026 ACME. Все права защищены.</footer>
+
+</body>
+</html>
