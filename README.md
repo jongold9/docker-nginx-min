@@ -1,6 +1,6 @@
 # nginx-min
 
-Minimal Docker image with nginx (~6.5 MB). Static, stripped binary on a `scratch` base — no OS, no shell, no extra packages.
+Minimal Docker image with nginx (~3 MB). Static binary, stripped and UPX-compressed, on a `scratch` base — no OS, no shell, no extra packages.
 
 ## Structure
 
@@ -42,7 +42,7 @@ Enabled: http, ssl, proxy.
 |---|---|
 | `nginx:latest` | ~190 MB |
 | `nginx:alpine` | ~25 MB |
-| **nginx-min** | **~6.5 MB** |
+| **nginx-min** | **~3 MB** |
 
 ## Configuration
 

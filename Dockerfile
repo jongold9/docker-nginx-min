@@ -10,7 +10,8 @@ RUN apk add --no-cache \
     pcre-dev \
     zlib-dev \
     zlib-static \
-    wget
+    wget \
+    upx
 
 RUN wget -q "https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" \
     && echo "627fe086209bba80a2853a0add9d958d7ebbdffa1a8467a5784c9a6b4f03d738  nginx-${NGINX_VERSION}.tar.gz" | sha256sum -c - \
@@ -40,6 +41,7 @@ RUN wget -q "https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" \
     && make -j$(nproc) \
     && make install \
     && strip /usr/sbin/nginx \
+    && upx --best --lzma /usr/sbin/nginx \
     && rm -rf /etc/nginx/*_params /etc/nginx/*.default /etc/nginx/fastcgi.conf /etc/nginx/koi-* /etc/nginx/win-utf /etc/nginx/html \
     && mkdir -p /tmp/client_body /tmp/proxy \
     && echo "nobody:x:65534:65534:nobody:/:/sbin/nologin" > /etc_passwd \
