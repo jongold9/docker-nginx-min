@@ -1,52 +1,52 @@
 # nginx-min
 
-Минимальный Docker-образ с nginx (~8 МБ). Статический бинарь, базовый образ `scratch` — нет ОС, нет shell, нет лишних пакетов.
+Minimal Docker image with nginx (~6.5 MB). Static, stripped binary on a `scratch` base — no OS, no shell, no extra packages.
 
-## Структура
+## Structure
 
 ```
 .
-├── Dockerfile        # Двухэтапная сборка: Alpine → scratch
-├── nginx.conf        # Минимальный конфиг nginx
+├── Dockerfile        # Two-stage build: Alpine → scratch
+├── nginx.conf        # Minimal nginx config
 ├── docker-compose.yml
 └── html/
-    └── index.html    # Статика
+    └── index.html    # Static site
 ```
 
-## Запуск
+## Usage
 
 ```bash
 # Compose
 docker compose up -d
 
-# Или вручную
+# Manual
 docker build -t nginx-min .
 docker run -p 8080:80 nginx-min
 ```
 
-Открыть: http://localhost:8080
+Open: http://localhost:8080
 
-## Сборка
+## How it works
 
-Двухэтапная:
+Two-stage build:
 
-1. **builder** — Alpine компилирует nginx со статической линковкой (`-static`)
-2. **scratch** — только бинарь + конфиг, без ОС
+1. **builder** — Alpine compiles nginx with static linking (`-static`)
+2. **scratch** — only the binary + config, no OS
 
-Отключённые модули: uwsgi, scgi, fastcgi, grpc, memcached, auth_basic, mail.  
-Оставлены: http, ssl, proxy.
+Disabled modules: uwsgi, scgi, fastcgi, grpc, memcached, auth_basic, mail.  
+Enabled: http, ssl, proxy.
 
-## Размер
+## Size comparison
 
-| Образ | Размер |
+| Image | Size |
 |---|---|
-| `nginx:latest` | ~190 МБ |
-| `nginx:alpine` | ~25 МБ |
-| **nginx-min** | **~8 МБ** |
+| `nginx:latest` | ~190 MB |
+| `nginx:alpine` | ~25 MB |
+| **nginx-min** | **~6.5 MB** |
 
-## Конфигурация
+## Configuration
 
-Для смены порта или root-директории — редактировать `nginx.conf` и пересобрать.
+To change port or root directory — edit `nginx.conf` and rebuild.
 
 ```bash
 docker build --build-arg NGINX_VERSION=1.26.2 -t nginx-min .

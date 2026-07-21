@@ -39,6 +39,8 @@ RUN wget -q "https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" \
         --without-mail_smtp_module \
     && make -j$(nproc) \
     && make install \
+    && strip /usr/sbin/nginx \
+    && rm -rf /etc/nginx/*_params /etc/nginx/*.default /etc/nginx/fastcgi.conf /etc/nginx/koi-* /etc/nginx/win-utf /etc/nginx/html \
     && mkdir -p /tmp/client_body /tmp/proxy \
     && echo "nobody:x:65534:65534:nobody:/:/sbin/nologin" > /etc_passwd \
     && echo "nobody:x:65534:" > /etc_group
