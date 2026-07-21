@@ -44,6 +44,14 @@ Enabled: http, ssl, proxy.
 | `nginx:alpine` | ~25 MB |
 | **nginx-min** | **~3 MB** |
 
+### Optimization history
+
+| Step | Size | Change |
+|---|---|---|
+| Initial (static binary, scratch base) | ~8 MB | multi-stage build, static linking, `scratch` final stage |
+| Strip + drop unused files | ~6.5 MB | `strip` on binary, removed unused fastcgi/uwsgi/scgi conf files and default html |
+| UPX compression | **~3 MB** | `upx --best --lzma` on stripped binary |
+
 ## Configuration
 
 To change port or root directory — edit `nginx.conf` and rebuild.
